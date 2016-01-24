@@ -2,11 +2,19 @@
  <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
      <title>Hello World</title>
-     <script src="sdk/scripts/VSS.SDK.js"></script>
+     <script src="sdk/VSS.SDK.js"></script>
  </head>
  <body>
-     <script type="text/javascript">VSS.init();</script>
-     <h1>Hello World</h1>
-     <script type="text/javascript">VSS.notifyLoadSucceeded();</script>
+     <script type="text/javascript"> VSS.init({
+           usePlatformScripts: true,
+            setupModuleLoader: true 
+        });
+
+     </script>
+
+     <h1>Dashboard</h1>
+     <div id="grid-container"></div>
+
+    <script type="text/javascript"> VSS.require(["out/dashboard"], function (dashboard) { }); </script>
  </body>
  </html>

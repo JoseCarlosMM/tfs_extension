@@ -1,9 +1,9 @@
 {
      "manifestVersion": 1,
-     "id": "sample-extension",
+     "id": "dashboard-extension",
      "version": "0.1.0",
-     "name": "My first sample extension",
-     "description": "A sample Visual Studio Services extension.",
+     "name": "Dashboard extension",
+     "description": "A Visual Studio Team Services dashboard for Scrum projects.",
      "publisher": "url2015",
      "targets": [
          {
@@ -15,31 +15,34 @@
      },
         "contributions": [
          {
-             "id": "Fabrikam.HelloWorld",
-             "type": "ms.vss-web.hub",
-             "description": "Adds a 'Hello' hub to the Work hub group.",
-             "targets": [
-                 "ms.vss-work-web.work-hub-group"
-             ],
-             "properties": {
-                 "name": "Hello",
-                 "order": 99,
-                 "uri": "page.html"
-             }
-         }
+            "id": "dashboard-group",
+            "type": "ms.vss-web.hub-group",
+            "description": "Dashboard group",
+            "targets": [
+                "ms.vss-web.project-hub-groups-collection"
+            ],
+            "properties": {
+                "name": "Dashboard",
+                "order": 100
+            }
+        },
+        {
+            "id": "dashboard-hub",
+            "type": "ms.vss-web.hub",
+            "description": "Dashboard hub.",
+            "targets": [
+                ".dashboard-group"
+            ],
+            "properties": {
+                "name": "Dashboard",
+                "order": 100,
+                "uri": "page.html"
+            }
+        }
      ],
       "files": [
          {
-             "path": "page.html", "addressable": true
-         },
-         {
-             "path": "scripts", "addressable": true
-         },
-         {
-             "path": "sdk/scripts", "addressable": true
-         },
-         {
-             "path": "images/logo.png", "addressable": true
+             "path": ".", "addressable": true
          }
      ]
 }

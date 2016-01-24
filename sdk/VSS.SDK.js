@@ -259,15 +259,17 @@ var XDM;
                     methodArgs = this._customDeserializeObject(rpcMessage.params);
                 }
                 var result = method.apply(registeredInstance, methodArgs);
-                if (result && result.then && typeof result.then === "function") {
-                    result.then(function (asyncResult) {
-                        _this._success(rpcMessage, asyncResult, rpcMessage.handshakeToken);
-                    }, function (e) {
-                        _this._error(rpcMessage, e, rpcMessage.handshakeToken);
-                    });
-                }
-                else {
-                    this._success(rpcMessage, result, rpcMessage.handshakeToken);
+                if (result !== undefined) {
+                    if (result && result.then && typeof result.then === "function") {
+                        result.then(function (asyncResult) {
+                            _this._success(rpcMessage, asyncResult, rpcMessage.handshakeToken);
+                        }, function (e) {
+                            _this._error(rpcMessage, e, rpcMessage.handshakeToken);
+                        });
+                    }
+                    else {
+                        this._success(rpcMessage, result, rpcMessage.handshakeToken);
+                    }
                 }
             }
             catch (exception) {
@@ -609,9 +611,7 @@ var XDM;
                 }
             }
             if (channelOwnerFound && !handled) {
-                if (window.console) {
-                    console.error("No handler found on any channel for message: " + JSON.stringify(rpcMessage));
-                }
+                console.error("No handler found on any channel for message: " + JSON.stringify(rpcMessage));
             }
         };
         XDMChannelManager.prototype._subscribe = function (windowObj) {
@@ -906,7 +906,7 @@ var VSS;
     }
     VSS.getRegisteredObject = getRegisteredObject;
     /**
-    * Fetch an access token which will allow calls to be made to other VSTS services
+    * Fetch an access token which will allow calls to be made to other VSO services
     */
     function getAccessToken() {
         return parentChannel.invokeRemoteMethod("getAccessToken", "VSS.HostControl");
