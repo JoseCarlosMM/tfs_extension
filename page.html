@@ -1,21 +1,41 @@
- <!DOCTYPE html>
- <html xmlns="http://www.w3.org/1999/xhtml">
- <head>
-     <title>Hello World</title>
-     <script src="sdk/VSS.SDK.js"></script>
- </head>
- <body>
-     <script type="text/javascript"> VSS.init({
-           explicitNotifyLoaded: true,
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Hello World</title>
+        <script src="sdk/VSS.SDK.js"></script>
+        <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+    </head>
+    <body>
+        <script type="text/javascript"> VSS.init({
+            explicitNotifyLoaded: true,
             usePlatformScripts: true, 
             usePlatformStyles: true
-        });
+            });
+        </script>
 
-     </script>
+        <h1>Dashboard</h1>
 
-     <h1>Dashboard</h1>
-     <div id="grid-container"></div>
+        <div id="PBI">
+            <h2>Product backlog items</h2>
+            <script type="text/javascript"> VSS.require(["out/PBIs"], function (dashboard) { }); </script>
+        </div>
 
-    <script type="text/javascript"> VSS.require(["out/dashboard"], function (dashboard) { }); </script>
- </body>
- </html>
+        <div id="Burnchart">
+            <h2>Burnchart</h2>
+            <img src="https://almlatam.visualstudio.com/DefaultCollection/89551369-2a98-4ad4-b36d-738e098395a3/_api/_teamChart/Burndown?chartOptions=%7B%22Width%22%3A887%2C%22Height%22%3A433%2C%22ShowDetails%22%3Atrue%2C%22Title%22%3A%22%22%7D&counter=2&iterationPath=Glimpse+and+Application+Insights\Sprint+91&__v=5" >
+        </div>
+
+        <div id="Bugs">
+            <h2>Bugs</h2>
+            <script type="text/javascript"> VSS.require(["out/bugs"], function (dashboard) { }); </script>
+        </div>
+
+        <div id="Build">
+            <h2>Last Build</h2>
+        </div>
+
+        <div id="SprintStatus">
+            <h2>Sprint Status</h2>
+        </div>
+    </body>
+</html>
