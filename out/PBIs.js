@@ -10,28 +10,28 @@ define(["require", "exports", "VSS/Controls", "VSS/Controls/Grids"], function (r
         retrieveApprovedPBI();
     });
     function retrieveApprovedPBI() {
-        var query = { query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('Approved') AND [System.WorkItemType] = 'Product Backlog Item'" };
+        var query = { query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('Approved') AND [System.WorkItemType] = 'Product Backlog Item' AND [System.IterationPath] = @CurrentIteration" };
         witClient.queryByWiql(query, projectId).then(function (result) {
             approvedPBI = result.workItems.length;
             retrieveCommittedPBI();
         });
     }
     function retrieveCommittedPBI() {
-        var query = { query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('Committed') AND [System.WorkItemType] = 'Product Backlog Item'" };
+        var query = { query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('Committed') AND [System.WorkItemType] = 'Product Backlog Item' AND [System.IterationPath] = @CurrentIteration" };
         witClient.queryByWiql(query, projectId).then(function (result) {
             committedPBI = result.workItems.length;
             retrieveDonePBI();
         });
     }
     function retrieveDonePBI() {
-        var query = { query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('Done') AND [System.WorkItemType] = 'Product Backlog Item'" };
+        var query = { query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('Done') AND [System.WorkItemType] = 'Product Backlog Item' AND [System.IterationPath] = @CurrentIteration" };
         witClient.queryByWiql(query, projectId).then(function (result) {
             donePBI = result.workItems.length;
             buildGrid();
         });
     }
     function retrieveOpenImpediments() {
-        var query = { query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('Open') AND [System.WorkItemType] = 'Impediment'" };
+        var query = { query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('Open') AND [System.WorkItemType] = 'Impediment' AND [System.IterationPath] = @CurrentIteration" };
         witClient.queryByWiql(query, projectId).then(function (result) {
             openImpediments = result.workItems.length;
             buildGrid();
