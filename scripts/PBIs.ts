@@ -8,7 +8,7 @@ import VSS_Service = require("VSS/Service");
 
 var approvedPBI, committedPBI, donePBI, openImpediments;
 var projectId;
-var witClient;
+var witClient;  
 var container = $("#PBI");
 
 

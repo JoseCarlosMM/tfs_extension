@@ -6,14 +6,21 @@ div{
 #PBI{
 	margin-top: -2%;
 	margin-left: 10px;
-	width: 48%;
+	width: 24%;
+	height: 45%;
+}
+
+#Features{
+	margin-top: -2%;
+	margin-left: 25%;
+	width: 24%;
 	height: 45%;
 }
 
 #Burnchart{
 	margin-top: -2%;
 	margin-left: 50%;
-	width: 48%;
+	width: 24%;
 	height: 45%;
 }
 
@@ -28,6 +35,8 @@ img{
 	width: 24%;
 	height: 45%;
 }
+
+
 
 #Build{
 	margin-top: 18%;

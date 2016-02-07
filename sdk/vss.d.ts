@@ -11981,7 +11981,7 @@ export class TextFilterControl extends Controls.Control<ITextFilterControlOption
     /**
      * Displays the search box and hides the search button
      */
-    activateSearch(): void;
+    activateSearch(): void;  
     /**
      * Removes the search bar and shows the search button instead
      *
