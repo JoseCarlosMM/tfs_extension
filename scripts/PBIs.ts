@@ -40,7 +40,7 @@ function retrieveDonePBI() : void {
     var query = {query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('Done') AND [System.WorkItemType] = 'Product Backlog Item' AND [System.IterationPath] = @CurrentIteration"};
     witClient.queryByWiql(query, projectId).then(function (result) {
         donePBI = result.workItems.length;
-        buildGrid();
+        retrieveOpenImpediments();
     });
 }
 
