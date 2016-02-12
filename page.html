@@ -12,10 +12,41 @@
             usePlatformStyles: true
             });
         </script>
+        <script>
+         function addEvent(obj, event, func) {
+            if (obj.addEventListener) {
+                obj.addEventListener(event, func, false);
+                return true;
+            } else if (obj.attachEvent) {
+                obj.attachEvent('on' + event, func);
+            } else {
+                var f = obj['on' + event];
+                obj['on' + event] = typeof f === 'function' ? function() {
+                    f();
+                    func();
+                } : func
+            }
+        }
+        </script>
 
         <div id="PBI">
             <h2>Product backlog items</h2>
-            <script type="text/javascript"> VSS.require(["out/PBIs"], function (dashboard) { }); </script>
+            <script type="text/javascript">  VSS.require(["out/PBIs"], function (dashboard) { }) ; 
+            addEvent(document.getElementById('PBI'), 'click', function() {
+               
+                var vsoContext = VSS.getWebContext();
+                 var extensionContext = VSS.getExtensionContext();
+
+               var baseUrl =  vsoContext.host.uri;
+               console.log(baseUrl);
+ 
+                
+               window.parent.location.href = vsoContext.host.uri
+                + vsoContext.project.name 
+                + "/_backlogs";
+             });
+             </script>
+            
         </div>
 
         <div id="Burnchart">
