@@ -6,13 +6,27 @@ div{
 #PBI{
 	margin-top: 5px;
 	margin-left: 10px;
-	width: 48%;
+	width: 24%;
 	height: 45%;
 }
 
+#Features{
+	margin-top: 1%;
+	margin-left: 25%;
+	width: 10%;
+	height: 15%;
+}
+
+#FeaturesGrid{
+	margin-top: -6%;
+	margin-left: 8%;
+	width: 24%;
+	height: 18%;
+}
+
 #Burnchart{
-	margin-top: 5px;
-	margin-left: 50%;
+	margin-top: 1px;
+	margin-left: 60%;
 	width: 24%;
 	height: 45%;
 }
