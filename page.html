@@ -12,7 +12,7 @@
             usePlatformStyles: true
             });
         </script>
-        <script>
+		 <script>
          function addEvent(obj, event, func) {
             if (obj.addEventListener) {
                 obj.addEventListener(event, func, false);
@@ -29,9 +29,15 @@
         }
         </script>
 
+		 <div id="Features">
+            <h2>Features in progress:</h2>
+            <div id="FeaturesGrid">
+            <script type="text/javascript"> VSS.require(["out/Features"], function (dashboard) { }); </script>
+            </div>
+		</div>
         <div id="PBI">
             <h2>Product backlog items</h2>
-            <script type="text/javascript">  VSS.require(["out/PBIs"], function (dashboard) { }) ; 
+           <script type="text/javascript">  VSS.require(["out/PBIs"], function (dashboard) { }) ; 
             addEvent(document.getElementById('PBI'), 'click', function() {
                
                 var vsoContext = VSS.getWebContext();
@@ -46,7 +52,6 @@
                 + "/_backlogs";
              });
              </script>
-            
         </div>
 
         <div id="Burnchart">
