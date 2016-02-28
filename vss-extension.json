@@ -13,7 +13,7 @@
       "icons": {
          "default": "images/logo.png"
      },
-     "scopes": ["vso.build", "vso.work", "vso.code"],
+     "scopes": ["vso.build", "vso.work", "vso.code","vso.test"],
         "contributions": [
          {
             "id": "dashboard-group",
