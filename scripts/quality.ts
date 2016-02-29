@@ -74,8 +74,8 @@ function buildGrid(): void {
             return data;
         }(),
         columns: [
-            { text: "Id.", index: 0, width: 150 },
-            { text: "No.", index: 1, width: 100 }
+            { text: " ", index: 0, width: 150 },
+            { text: " ", index: 1, width: 100 }
         ]
     };
     Controls.create<Grids.Grid, Grids.IGridOptions>(Grids.Grid, container, options);

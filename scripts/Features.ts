@@ -9,7 +9,7 @@ import VSS_Service = require("VSS/Service");
 var ResolvedFeatures, NewFeatures, ClosedFeatures,ActiveFeatures;
 var projectId;
 var witClient;
-var container = $("#FeaturesGrid");
+var container = $("#Features");
 
 
 
@@ -21,7 +21,7 @@ VSS.require(["VSS/Service", "TFS/WorkItemTracking/RestClient"],
 });
 
 function retrieveActive() : void {
-    var query = {query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('Active') AND [System.WorkItemType] = 'Feature'"};
+    var query = {query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('In Progress') AND [System.WorkItemType] = 'Feature'"};
     witClient.queryByWiql(query, projectId).then(function (result) {
         ActiveFeatures = result.workItems.length;
 
@@ -38,29 +38,21 @@ function retrieveActive() : void {
                         function (workItems) {
                             // Access the work items and their field values
                             var options = {
-        width: "100%",
-        height: "80%",
-        source: workItems.map(function (w) {
-                return [
-                    w.id, 
-                    w.fields["System.Title"]];
-            }),
-            columns: [
-                { text: " ", index: 1, width: 200 }
-            ]
-        };
-    Controls.create<Grids.Grid, Grids.IGridOptions>(Grids.Grid, container, options);
-    VSS.notifyLoadSucceeded();
-                          //  VSS.notifyLoadSucceeded();
-                        });
-
-
-         buildGrid();
+                            width: "100%",
+                            height: "80%",
+                            source: workItems.map(function (w) {
+                                    return [
+                                        w.id, 
+                                        w.fields["System.Title"]];
+                                }),
+                                columns: [
+                                    { text: " ", index: 1, width: 150 }
+                                ]
+                            };
+                        Controls.create<Grids.Grid, Grids.IGridOptions>(Grids.Grid, container, options);
+                        VSS.notifyLoadSucceeded();
+                });
     });
-}
-
-function buildGrid(): void {
-    
 }
 
 

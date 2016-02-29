@@ -30,10 +30,8 @@
         </script>
 
 		 <div id="Features">
-            <h2>Features in progress:</h2>
-            <div id="FeaturesGrid">
+            <h2>Features in progress</h2>
             <script type="text/javascript"> VSS.require(["out/Features"], function (dashboard) { }); </script>
-            </div>
 		</div>
         <div id="PBI">
             <h2>Product backlog items</h2>
@@ -70,8 +68,11 @@
             <script type="text/javascript"> VSS.require(["out/build"], function (dashboard) { }); </script>
         </div>
 
-        <div id="SprintStatus">
-            <h2>Sprint Status</h2>
+        <div id="BuildStatus">
+            <h2>Build Status</h2>
+            <canvas id="canvasChart" height="300" width="500"></canvas>
+             <script type="text/javascript" src="out/Chart.js">  </script>
+            <script type="text/javascript"> VSS.require(["out/buildChart"], function (dashboard) { }); </script>
         </div>
     </body>
 </html>

@@ -13,7 +13,15 @@ define(["require", "exports", "VSS/Controls", "VSS/Controls/Grids", "TFS/Build/R
     });
     function retrieveBuilds() {
         buildClient.getBuilds(projectId).then(function (result) {
-            lastBuild = result[0];
+            var idMax = -1;
+            //Getting the last build
+            for (var i = 0; i < result.length; i++) {
+                var build = result[i];
+                if (parseInt(build.id) > idMax) {
+                    idMax = parseInt(build.id);
+                    lastBuild = build;
+                }
+            }
             buildId = lastBuild.id;
             sourceBranch = lastBuild.sourceBranch;
             buildStatus = getStatus(lastBuild.status);
@@ -84,8 +92,8 @@ define(["require", "exports", "VSS/Controls", "VSS/Controls/Grids", "TFS/Build/R
                 return data;
             }(),
             columns: [
-                { text: "Id.", index: 0, width: 250 },
-                { text: "No.", index: 1, width: 250 }
+                { text: " ", index: 0, width: 150 },
+                { text: " ", index: 1, width: 200 }
             ]
         };
         Controls.create(Grids.Grid, container, options);

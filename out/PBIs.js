@@ -50,8 +50,8 @@ define(["require", "exports", "VSS/Controls", "VSS/Controls/Grids"], function (r
                 return data;
             }(),
             columns: [
-                { text: "Id.", index: 0, width: 250 },
-                { text: "No.", index: 1, width: 250 }
+                { text: " ", index: 0, width: 250 },
+                { text: " ", index: 1, width: 100 }
             ]
         };
         Controls.create(Grids.Grid, container, options);
