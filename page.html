@@ -4,6 +4,9 @@
         <title>Hello World</title>
         <script src="sdk/VSS.SDK.js"></script>
         <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+        <link type="text/css" rel="stylesheet" href="bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="sdk/bootstrap.min.js"></script>
     </head>
     <body>
         <script type="text/javascript"> VSS.init({
@@ -28,7 +31,27 @@
             }
         }
         </script>
+        <div id="Tabs">
+            <ul id="container" class="nav nav-tabs">
+                <script type="text/javascript"> VSS.require(["out/Tabs"], function (dashboard) { }); </script>
+                <script type="text/javascript">
+                    $(document).ready(function()
+                    {
 
+                        $('.nav').on('click', 'li', function()
+                        {
+                            $('.nav li').removeClass('active');
+                            $(this).addClass('active');
+                        });
+                        /*$("ul").delegate("li", "click", function()
+                        {
+                            //$('ul li').removeClass('active');
+                            $("li").addClass("active");
+                        });*/
+                    });
+                </script>
+            </ul>
+        </div>
 		 <div id="Features">
             <h2>Features in progress</h2>
             <script type="text/javascript"> VSS.require(["out/Features"], function (dashboard) { }); </script>
@@ -70,7 +93,7 @@
 
         <div id="BuildStatus">
             <h2>Build Status</h2>
-            <canvas id="canvasChart" height="300" width="500"></canvas>
+            <canvas id="canvasChart" height="225" width="350"></canvas>
              <script type="text/javascript" src="out/Chart.js">  </script>
             <script type="text/javascript"> VSS.require(["out/buildChart"], function (dashboard) { }); </script>
         </div>

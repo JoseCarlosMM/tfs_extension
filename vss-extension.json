@@ -1,7 +1,7 @@
 {
      "manifestVersion": 1,
      "id": "dashboard-extension",
-     "version": "0.1.0",
+     "version": "0.1.1",
      "name": "Dashboard extension",
      "description": "A Visual Studio Team Services dashboard for Scrum projects.",
      "publisher": "url2015",
