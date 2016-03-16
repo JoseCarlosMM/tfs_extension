@@ -21,7 +21,7 @@ VSS.require(["VSS/Service", "TFS/WorkItemTracking/RestClient"],
 });
 
 function retrieveActive() : void {
-    var query = {query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('In Progress') AND [System.WorkItemType] = 'Feature'"};
+    var query = {query: "SELECT [System.Id] FROM WorkItem WHERE [System.State] IN ('In Progress') AND [System.WorkItemType] = 'Feature' AND [System.IterationPath] = @CurrentIteration"};
     witClient.queryByWiql(query, projectId).then(function (result) {
         ActiveFeatures = result.workItems.length;
 
